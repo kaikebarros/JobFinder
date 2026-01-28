@@ -1,0 +1,32 @@
+html, body {
+  margin: 0;
+  overflow-x: hidden; /* evita scroll horizontal */
+}
+
+.botao {
+  z-index: 2147483647;
+  position: fixed; /* fica sempre visível */
+  top: 47%;       /* distância do topo da tela */
+  left: 50%;       /* centraliza horizontalmente */
+  transform: translateX(-50%);
+
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  border: none;
+  padding: 14px 22px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(0,0,0,.25);
+  transition: transform .2s, box-shadow .2s;
+}
+
+.botao:hover {
+  transform: translate(-50%, -2px);
+  box-shadow: 0 12px 25px rgba(0,0,0,.35);
+}
+
+.botao:active {
+  transform: translateX(-50%) scale(.97);
+}

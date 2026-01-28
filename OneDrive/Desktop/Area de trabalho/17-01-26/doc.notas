@@ -1,0 +1,59 @@
+┌──────────────┐
+│ LocalStorage │
+└──────┬───────┘
+       │  (carregar)
+       ▼
+┌────────────────┐
+│ listaDeNotas[] │  ← array central
+└──────┬─────────┘
+       │
+       │ cria elementos
+       ▼
+┌──────────────┐
+│   newBox     │ (div)
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│  textarea    │
+└──────┬───────┘
+       │
+       │ usuário digita
+       ▼
+┌────────────────────────┐
+│ atualiza listaDeNotas │
+└──────┬────────────────┘
+       │
+       ▼
+┌──────────────┐
+│ LocalStorage │ (salva)
+└──────────────┘
+
+
+
+
+3️⃣ Fluxo resumido
+
+✅Carregar notas:
+
+✅Ler array do localStorage.
+
+✅Para cada nota: criar elementos, colocar valores, adicionar listener que atualiza o array e salva.
+
+✅Criar nova nota:
+
+✅Criar elementos.
+
+✅Gerar posição aleatória.
+
+✅Criar objeto novaNota.
+
+✅Adicionar ao array central.
+
+✅Adicionar listener que atualiza o array.
+
+✅Salvar array no localStorage.
+
+✅Adicionar elementos na tela.
+
+Sempre salvar no localStorage depois que o array for alterado (nova nota ou edição).
