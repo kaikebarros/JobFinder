@@ -1,0 +1,36 @@
+:root{
+  /*Font*/
+  --font-primary:"Poppins", sans-serif;
+  --fw-regular:400;
+  --fw-medium:500;
+  --fw-bold:700;
+  /* Roxo principal */
+  --primary: #7C3AED;
+  --primary-hover: #6D28D9;
+  --primary-light: #A855F7;
+
+  /* Fundo */
+  --background: #0B0B14;
+  --surface: #141420;
+  --card: #1A1A28;
+
+  /* Texto */
+  --text-primary: #FFFFFF;
+  --text-secondary: #A1A1AA;
+  --text-muted: #71717A;
+
+  /* Bordas */
+  --border: #2A2A3C;
+
+  /* Estados */
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --error: #EF4444;
+
+  /* Inputs */
+  --input-bg: #181824;
+  --placeholder: #6B7280;
+
+  /* Sombras */
+  --shadow: rgba(0,0,0,.35);
+}

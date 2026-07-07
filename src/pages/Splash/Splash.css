@@ -1,0 +1,14 @@
+.splash {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+}
+
+/* Logo */
+.splash-logo {
+  width: 200px;
+}
