@@ -4,6 +4,7 @@ import developer from "../../assets/Job-hunt-amico.svg";
 import logo from "../../assets/jobfinder-logo.png";
 import BotaoProximo from "../../Button/ButtonProximo";
 import BotaoPular from "../../Button/ButtonPular";
+import Dots from "../../Componentes/Dots/Dots";
 import "./Onboarding.css";
 
 function Onboarding() {
@@ -28,13 +29,9 @@ function Onboarding() {
           className="onboarding-amico"
         />
 
-        <div className="dots">
-          <div className="dot"></div>
-          <div className="dot"></div>
-          <div className="dot"></div>
-        </div>
-        {/* mudar rota com o click do botao para pular para pagina de login, e proximo para o welcome  */}
-        <BotaoPular onClick={() => navigate("/")} />
+        <Dots active={1}/>
+       
+        <BotaoPular onClick={() => navigate("/login")} />
         <BotaoProximo onClick={() => navigate("/welcome")} />
       </motion.div>
     </>
@@ -43,5 +40,4 @@ function Onboarding() {
 
 export default Onboarding;
 
-/*corrigir o splash, tenho que criar a pagina de 2s e o splash atual vai virar pag de inicio
- */
+

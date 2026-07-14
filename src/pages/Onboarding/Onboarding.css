@@ -29,21 +29,7 @@
   width: 350px;
 }
 
-/* Dots */
-.dots {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 16px;
-}
 
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: var(--primary);
-}
 
 /* Botão começar */
 .btn-proximo {

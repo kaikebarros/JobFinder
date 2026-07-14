@@ -4,6 +4,7 @@ import jobapplicant from "../../assets/People search-bro.svg";
 import BotaoProximo from "../../Button/ButtonProximo";
 import BotaoPular from "../../Button/ButtonPular";
 import "./Welcome.css";
+import Dots from "../../Componentes/Dots/Dots";
 function Welcome() {
   const navigate = useNavigate();
 
@@ -26,11 +27,7 @@ function Welcome() {
           Descubra milhares de vagas de emprego e encontre a oportunidade ideal
           para sua carreira em poucos minutos
         </p>
-        <div className="dots">
-          <div className="dot"></div>
-          <div className="dot"></div>
-          <div className="dot"></div>
-        </div>
+           <Dots active={2}/>
 
         <BotaoPular onClick={() => navigate("/")} />
         <BotaoProximo onClick={() => navigate("/getstarted")} />

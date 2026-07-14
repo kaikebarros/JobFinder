@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import imgGetStarted from "../../assets/Enthusiastic-bro.svg";
 import BotaoComecar from "../../Button/ButtonComecar";
 import BotaoLogar from "../../Button/ButtonLogar";
+import Dots from "../../Componentes/Dots/Dots";
+
 import "./GetStarted.css";
 function GetStarted() {
   const navigate = useNavigate()
@@ -18,8 +20,9 @@ function GetStarted() {
         Crie seu perfil, explore vagas personalizadas e candidate-se com
         facilidade. Seu próximo emprego pode estar a um toque de distâcia
       </p>
-      < BotaoComecar onClick={() => navigate("/")} />
-    <BotaoLogar onClick={()=> navigate("/")}/>
+       <Dots active={3}/>
+      < BotaoComecar onClick={() => navigate("/login")} />
+    <BotaoLogar onClick={()=> navigate("/login")}/>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { AnimatePresence } from "framer-motion";
 import { Route, Routes, useLocation } from "react-router-dom";
 import GetStarted from "../pages/GetStarted/GetStarted";
+import Login from "../pages/Login/Login";
 import Onboarding from "../pages/Onboarding/Onboarding";
 import Splash from "../pages/Splash/Splash";
 import Welcome from "../pages/Welcome/Welcome";
@@ -15,6 +16,7 @@ function Routers() {
 
           <Route path="/welcome" element={<Welcome />}></Route>
           <Route path="/getstarted" element={<GetStarted />}></Route>
+          <Route path="/login" element={<Login/>}></Route>
         </Routes>
       </AnimatePresence>
     </>
