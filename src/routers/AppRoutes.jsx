@@ -3,9 +3,9 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import GetStarted from "../pages/GetStarted/GetStarted";
 import Login from "../pages/Login/Login";
 import Onboarding from "../pages/Onboarding/Onboarding";
+import Register from "../pages/Register/Register";
 import Splash from "../pages/Splash/Splash";
 import Welcome from "../pages/Welcome/Welcome";
-import Register from "../Register/Register";
 function Routers() {
   const location = useLocation();
   return (
