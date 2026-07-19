@@ -5,6 +5,7 @@ import Login from "../pages/Login/Login";
 import Onboarding from "../pages/Onboarding/Onboarding";
 import Splash from "../pages/Splash/Splash";
 import Welcome from "../pages/Welcome/Welcome";
+import Register from "../Register/Register";
 function Routers() {
   const location = useLocation();
   return (
@@ -17,6 +18,7 @@ function Routers() {
           <Route path="/welcome" element={<Welcome />}></Route>
           <Route path="/getstarted" element={<GetStarted />}></Route>
           <Route path="/login" element={<Login/>}></Route>
+          <Route path="/register" element={<Register/>}></Route>
         </Routes>
       </AnimatePresence>
     </>

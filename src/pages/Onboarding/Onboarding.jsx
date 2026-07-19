@@ -4,7 +4,7 @@ import developer from "../../assets/Job-hunt-amico.svg";
 import logo from "../../assets/jobfinder-logo.png";
 import BotaoProximo from "../../Button/ButtonProximo";
 import BotaoPular from "../../Button/ButtonPular";
-import Dots from "../../Componentes/Dots/Dots";
+import Dots from "../../Componentes/Dots";
 import "./Onboarding.css";
 
 function Onboarding() {
@@ -31,7 +31,7 @@ function Onboarding() {
 
         <Dots active={1}/>
        
-        <BotaoPular onClick={() => navigate("/login")} />
+        <BotaoPular onClick={() => navigate("/register")} />
         <BotaoProximo onClick={() => navigate("/welcome")} />
       </motion.div>
     </>
@@ -39,5 +39,6 @@ function Onboarding() {
 }
 
 export default Onboarding;
+
 
 

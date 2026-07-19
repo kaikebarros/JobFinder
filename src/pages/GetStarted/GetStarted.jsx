@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import imgGetStarted from "../../assets/Enthusiastic-bro.svg";
 import BotaoComecar from "../../Button/ButtonComecar";
 import BotaoLogar from "../../Button/ButtonLogar";
-import Dots from "../../Componentes/Dots/Dots";
+import Dots from "../../Componentes/Dots";
 
 import "./GetStarted.css";
 function GetStarted() {
@@ -21,7 +21,7 @@ function GetStarted() {
         facilidade. Seu próximo emprego pode estar a um toque de distâcia
       </p>
        <Dots active={3}/>
-      < BotaoComecar onClick={() => navigate("/login")} />
+      < BotaoComecar onClick={() => navigate("/register")} />
     <BotaoLogar onClick={()=> navigate("/login")}/>
     </div>
   );

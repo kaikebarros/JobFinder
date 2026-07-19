@@ -1,19 +1,50 @@
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { FiEyeOff } from "react-icons/fi";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 import { MdEmail } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/jobfinder-logo.png";
 import Entrar from "../../Button/ButtonEntrar";
 import { ContGithub, ContGoogle } from "../../Button/ButtonSocial";
-import Dots from "../../Componentes/Dots/Dots";
-import { verificarEmail, verificarSenha } from "../../utils/verificarLogin";
+import Dots from "../../Componentes/Dots";
+import { verificarEmail, verificarSenha } from "../../firebaseConfig/auth";
+import { auth } from "../../firebaseConfig/firebase";
+
 import "./Login.css";
 
 function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+
+  const [nome, setNome] = useState("");
+
+  const [mostrarSenha, setMostrarSenha] = useState(false);
+
+  const alternarIconeOlhoLogin = () => {
+    setMostrarSenha(!mostrarSenha);
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    if (!verificarEmail(email)) return;
+    if (!verificarSenha(senha)) return;
+
+    try {
+      const userLogin = await signInWithEmailAndPassword(auth, email, senha);
+      console.log(userLogin.user);
+      navigate("/welcome");
+    } catch (error) {
+      if (error.code === "auth/invalid-credential") {
+        console.log("E-mail ou senha incorretos");
+      } else {
+        console.log(error.message);
+      }
+    }
+  };
+
   return (
     <>
       <motion.div
@@ -46,35 +77,38 @@ function Login() {
                 required
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
+                autoComplete="username"
               />
             </div>
           </div>
 
           <div className="login-group">
-            <label htmlFor="password">Senha </label>
+            <label className="label-senha" htmlFor="password">
+              Senha{" "}
+            </label>
             <div className="input-wrapper">
-              <FiEyeOff />
+              {mostrarSenha ? (
+                <FiEye onClick={alternarIconeOlhoLogin} />
+              ) : (
+                <FiEyeOff onClick={alternarIconeOlhoLogin} />
+              )}
 
               <input
-                type="password"
+                type= {mostrarSenha?"text":"password"}
                 name=""
                 id="senha"
                 placeholder="••••••••"
+                
                 required
                 value={senha}
+                autoComplete="current-password"
                 onChange={(e) => setSenha(e.target.value)}
               />
             </div>
             <a href="#" className="forgot-password">
               Esqueceu sua senha?
             </a>
-            <Entrar
-              onClick={() => {
-                if (verificarEmail(email) && verificarSenha(senha)) {
-                  navigate("/");
-                }
-              }}
-            />
+            <Entrar onClick={handleLogin} />
             <div className="divisor">ou continue com</div>
             <Dots active={4} />
 
@@ -85,7 +119,10 @@ function Login() {
             </div>
             <p className="registre-se">
               {" "}
-              Ainda não tem conta? <a href="#">Cadastre-se</a>
+              Ainda não tem conta?{" "}
+              <a href="#" onClick={() => navigate("/register")}>
+                Cadastre-se
+              </a>
             </p>
           </div>
         </form>

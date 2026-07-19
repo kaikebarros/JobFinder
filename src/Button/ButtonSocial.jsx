@@ -1,16 +1,19 @@
-import { FaGoogle, FaGithub } from "react-icons/fa";
-export function ContGoogle(){
+import { FaGithub, FaGoogle } from "react-icons/fa";
+export function ContGoogle({onClick}){
   return<>
-  <button className="btn-pular"> <FaGoogle/> Continuar com o Google</button>
+  <button className="btn-pular"
+  onClick={onClick}> <FaGoogle/> Continuar com o Google</button>
   
   </>
 
 }
 
-export function ContGithub(){
+export function ContGithub({onClick}){
   return<>
 
-  <button className="btn-pular">
+  <button className="btn-pular"
+  onClick={onClick}>
+    
     <FaGithub/>
  Continuar com o GitHub</button>
   

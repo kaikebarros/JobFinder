@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import jobapplicant from "../../assets/People search-bro.svg";
 import BotaoProximo from "../../Button/ButtonProximo";
 import BotaoPular from "../../Button/ButtonPular";
+import Dots from "../../Componentes/Dots";
 import "./Welcome.css";
-import Dots from "../../Componentes/Dots/Dots";
 function Welcome() {
   const navigate = useNavigate();
 
@@ -29,7 +29,7 @@ function Welcome() {
         </p>
            <Dots active={2}/>
 
-        <BotaoPular onClick={() => navigate("/")} />
+        <BotaoPular onClick={() => navigate("/register")} />
         <BotaoProximo onClick={() => navigate("/getstarted")} />
       </motion.div>
     </>

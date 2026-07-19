@@ -1,17 +1,10 @@
-export const verificarEmail = (email) => {
-  if (!email.trim()) {
-    console.log("???");
-    return false;
-  }
+// import { signInWithEmailAndPassword } from "firebase/auth";
+// import { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import { verificarEmail, verificarSenha } from "../firebaseConfig/auth";
+// import { auth } from "../firebaseConfig/firebase";
 
-  return true;
-};
+//   function handleLogin(){
 
-export const verificarSenha = (senha) => {
-  if (!senha.trim()) {
-    console.log("Senha inválida");
-    return false;
-  }
 
-  return true;
-};
+
