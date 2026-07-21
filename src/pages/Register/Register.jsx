@@ -4,11 +4,11 @@ import { useState } from "react";
 import { FiEye, FiEyeOff, FiLock, FiUser } from "react-icons/fi";
 import { MdEmail } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import logo from "../../assets/jobfinder-logo.png";
 import Entrar from "../../Button/ButtonEntrar";
 import { ContGithub, ContGoogle } from "../../Button/ButtonSocial";
 import { verificarEmail, verificarSenha } from "../../firebaseConfig/auth";
 import { auth } from "../../firebaseConfig/firebase";
-import logo from "../assets/jobfinder-logo.png";
 
 import "./Register.css";
 
@@ -33,7 +33,7 @@ function Register() {
         senha,
       );
       console.log(userCreate.user);
-      navigate("/welcome");
+      navigate("/dashboard");
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
         console.log("Email já cadastrado");

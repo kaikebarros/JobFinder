@@ -35,7 +35,7 @@ function Login() {
     try {
       const userLogin = await signInWithEmailAndPassword(auth, email, senha);
       console.log(userLogin.user);
-      navigate("/welcome");
+      navigate("/dashboard");
     } catch (error) {
       if (error.code === "auth/invalid-credential") {
         console.log("E-mail ou senha incorretos");
@@ -113,7 +113,7 @@ function Login() {
             <Dots active={4} />
 
             <div className="login-social">
-              <ContGoogle onClick={() => navigate("/")} />
+              <ContGoogle onClick={() => navigate("/dasboard")} />
 
               <ContGithub />
             </div>

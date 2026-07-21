@@ -1,0 +1,201 @@
+.dashboard {
+  min-height: 100vh;
+  background: var(--background);
+  font-family: var(--font-primary);
+  color: var(--text-primary);
+
+  display: flex;
+  flex-direction: column;
+
+  padding-bottom: 90px;
+}
+
+/* =======================
+   DESTAQUE
+======================= */
+
+.destaque {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  padding: 0 1rem 2rem;
+}
+
+/* =======================
+   TÍTULOS
+======================= */
+
+.detaque-texto {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detaque-texto h2,
+.destaque > h2 {
+  font-size: 1.25rem;
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+}
+
+.detaque-texto a {
+  text-decoration: none;
+  color: var(--primary);
+  font-size: .9rem;
+  font-weight: var(--fw-medium);
+  transition: var(--transition);
+}
+
+.detaque-texto a:hover {
+  color: var(--primary-light);
+}
+
+/* =======================
+   CARD EM DESTAQUE
+======================= */
+
+.card-destaque {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  padding: 1rem;
+
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+
+  box-shadow: 0 10px 30px var(--shadow);
+
+  transition: var(--transition);
+
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+.card-destaque:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+}
+
+.card-destaque img {
+  width: 65px;
+  height: 65px;
+
+  border-radius: 16px;
+
+  background: var(--surface);
+
+  object-fit: cover;
+}
+
+/* =======================
+   DESCRIÇÃO
+======================= */
+
+.descricao-vaga-destaque {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+}
+
+.descricao-vaga-destaque h2 {
+  font-size: 1rem;
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+}
+
+.descricao-vaga-destaque p {
+  font-size: .88rem;
+  color: var(--text-secondary);
+}
+
+.descricao-vaga-destaque p:last-child {
+  margin-top: .35rem;
+
+  color: var(--success);
+
+  font-weight: var(--fw-bold);
+
+  font-size: .95rem;
+}
+
+/* =======================
+   LISTA DE VAGAS
+======================= */
+
+.destaque > .descricao-vaga-destaque {
+  padding: 1rem;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-md);
+
+  transition: var(--transition);
+
+  cursor: pointer;
+}
+
+.destaque > .descricao-vaga-destaque:hover {
+  border-color: var(--primary);
+
+  transform: translateY(-3px);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: var(--transition);
+
+  z-index: 999;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* =======================
+   DESKTOP
+======================= */
+
+@media (min-width:768px){
+
+.dashboard{
+    max-width:1200px;
+    margin:auto;
+}
+
+.destaque{
+    padding:0 2rem 3rem;
+}
+
+.card-destaque{
+    padding:1.5rem;
+}
+
+.card-destaque img{
+    width:80px;
+    height:80px;
+}
+
+.descricao-vaga-destaque h2{
+    font-size:1.15rem;
+}
+
+.descricao-vaga-destaque p{
+    font-size:.95rem;
+}
+
+}
