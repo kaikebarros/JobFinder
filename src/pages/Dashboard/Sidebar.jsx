@@ -6,8 +6,11 @@ import {
   FiList,
   FiSettings,
 } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 import "./Dashboardcss/Sidebar.css";
+
 function Sidebar() {
+  const navigate = useNavigate();
   return (
     <>
       <div className="sidebar">
@@ -18,11 +21,11 @@ function Sidebar() {
               <FiHome />
               Início
             </li>
-            <li>
+            <li onClick={() => navigate("/vagas")}>
               <FiBriefcase />
               Vagas
             </li>
-            <li>
+            <li onClick={()=>navigate("/favoritos")}>
               <FiHeart />
               Favoritos
             </li>

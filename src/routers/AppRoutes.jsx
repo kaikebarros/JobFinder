@@ -1,11 +1,14 @@
 import { AnimatePresence } from "framer-motion";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Dashboard from "../pages/Dashboard/Dashboard";
+import Favoritos from "../pages/Favoritos/Favoritos";
 import GetStarted from "../pages/GetStarted/GetStarted";
 import Login from "../pages/Login/Login";
 import Onboarding from "../pages/Onboarding/Onboarding";
+import Profile from "../pages/Profile/Profile";
 import Register from "../pages/Register/Register";
 import Splash from "../pages/Splash/Splash";
+import Vagas from "../pages/Vagas/Vagas";
 import Welcome from "../pages/Welcome/Welcome";
 function Routers() {
   const location = useLocation();
@@ -21,6 +24,9 @@ function Routers() {
           <Route path="/login" element={<Login/>}></Route>
           <Route path="/register" element={<Register/>}></Route>
           <Route path="/dashboard" element={<Dashboard/>}></Route>
+          <Route path="/vagas" element={<Vagas/>}> </Route>
+          <Route path="/favoritos" element={<Favoritos/>}></Route>
+          <Route path="/profile" element={<Profile/>}></Route>
         </Routes>
       </AnimatePresence>
     </>
