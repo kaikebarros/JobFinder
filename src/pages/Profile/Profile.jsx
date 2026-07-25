@@ -7,17 +7,18 @@ import {
   FiUser,
 } from "react-icons/fi";
 import logo from "../../assets/jobfinder-logo.png";
+import { BtnConfig } from "../../Componentes/BtnConfig";
+import Layout from "../../Componentes/Layout";
 import "./Profile.css";
-import Footer from "../Dashboard/Footer";
 function Profile() {
   return (
-    <>
+    <Layout >
+        <button > 
+       <BtnConfig/>
+       </button>
       <div className="profile">
         <div className="profile-header">
-          <button>
-            {" "}
-            <FiSettings />
-          </button>
+     
 
           <div className="profile-user">
             <img src={logo} alt="" />
@@ -77,9 +78,9 @@ function Profile() {
          
           </nav>
         </div>
-        <Footer/>
+     
       </div>
-    </>
+   </Layout>
   );
 }
 

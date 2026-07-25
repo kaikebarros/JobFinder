@@ -1,20 +1,19 @@
-import { FiBell, FiMenu } from "react-icons/fi";
-
+import { FiMenu } from "react-icons/fi";
 import "./Dashboardcss/Header.css";
-function Header({ abrirMenu }) {
+
+function Header({ abrirMenu, headerAction }) {
   return (
-    <>
-      <div className="reader-actions">
-        <FiMenu onClick={abrirMenu} />
+    <header className="header">
 
-        <FiBell />
+      <button className="menu-button" onClick={abrirMenu}>
+        <FiMenu />
+      </button>
+
+      <div className="header-notificacao">
+        {headerAction}
       </div>
 
-      <div className="saudacao">
-        <h1>Olá, Kaike! 👋</h1>
-        <p>Pronto para encontrar a oportunidade ideal?</p>
-      </div>
-    </>
+    </header>
   );
 }
 

@@ -1,73 +1,81 @@
-import { useState } from "react";
-import "../../styles/reset.css";
-import "./Dashboardcss/Dashboard.css";
-import Footer from "./Footer";
-import Header from "./Header";
-import SearchBar from "./SearchBar";
-import Sidebar from "./Sidebar";
 import logo from "../../assets/jobfinder-logo.png";
-
+import Layout from "../../Componentes/Layout";
+import  { BtnNotificacao } from "../../Componentes/BtnNotificacao";
+import "./Dashboardcss/Dashboard.css";
+import SearchBar from "./SearchBar";
 function Dashboard() {
-  const [menu, setMenu] = useState(false);
-
-  const abrirMenu = () => {
-    setMenu(true);
-  };
-
-  
-
   return (
-    <>
+    <Layout headerAction={<BtnNotificacao/>}>
       <div className="dashboard">
-        {" "}
-        <Header abrirMenu={abrirMenu} />
+ 
+        <div className="saudacao">
+          <h1>Olá, Kaike! 👋</h1>
+          <p>Pronto para encontrar a oportunidade ideal?</p>
+        </div>
 
-        {menu  && <Sidebar
-        />}
-      
-        <div className={`overlay ${menu? "active":""}` } onClick={() => setMenu(false)}></div>
         <SearchBar />
-        <div className="destaque">
+
+        <section className="destaque">
           <div className="detaque-texto">
             <h2>Em destaque</h2>
             <a href="#">Ver todas</a>
           </div>
-          <div className="card-destaque">
-            <img src={logo} alt="" />
 
-            <div className="descricao-vaga-destaque">
-              <h2>Front-end Developer</h2>
-              <p>Nubank</p>
-              <p>Remoto</p>
-              <p>R$ 8,000 - R$ 12,000</p>
-            </div>
-          </div>
-          <h2>Vagas para você</h2>
-          <div className="card-destaque">
-            <img src={logo} alt="" />
+          <div className="card-destaque">  <div className="container-vagas">
+                    <div className="card-vagas">
+                      <div className="card-destaque">
+                        <img src={logo} alt="" />
+          
+                        <div className="descricao-vaga-destaque">
+                          <h2>Front-end Developer</h2>
+                          <p>Nubank</p>
+                          <p>Remoto</p>
+                          <p>R$ 8,000 - R$ 12,000</p>
+                        </div>
+                      </div>
+          
+                      
+                    </div>
+                  </div></div>
 
-            <div className="descricao-vaga-destaque">
-              <h2>Front-end Developer</h2>
-              <p>Nubank</p>
-              <p>Remoto</p>
-              <p>R$ 8,000 - R$ 12,000</p>
-            </div>
-          </div>
-          <div className="card-destaque">
-            <img src={logo} alt="" />
+          <h2 className="titulo-vagas">Vagas para você</h2>
 
-            <div className="descricao-vaga-destaque">
-              <h2>Front-end Developer</h2>
-              <p>Nubank</p>
-              <p>Remoto</p>
-              <p>R$ 8,000 - R$ 12,000</p>
-            </div>
-          </div>
-        </div>
-        <Footer />
+          <div className="card-destaque"><div className="container-vagas">
+                    <div className="card-vagas">
+                      <div className="card-destaque">
+                        <img src={logo} alt="" />
+          
+                        <div className="descricao-vaga-destaque">
+                          <h2>Front-end Developer</h2>
+                          <p>Nubank</p>
+                          <p>Remoto</p>
+                          <p>R$ 8,000 - R$ 12,000</p>
+                        </div>
+                      </div>
+          
+                      
+                    </div>
+                  </div></div>
+
+          <div className="card-destaque">  <div className="container-vagas">
+                    <div className="card-vagas">
+                      <div className="card-destaque">
+                        <img src={logo} alt="" />
+          
+                        <div className="descricao-vaga-destaque">
+                          <h2>Front-end Developer</h2>
+                          <p>Nubank</p>
+                          <p>Remoto</p>
+                          <p>R$ 8,000 - R$ 12,000</p>
+                        </div>
+                      </div>
+          
+                      
+                    </div>
+                  </div></div>
+        </section>
       </div>
-    </>
+    </Layout>
   );
 }
-
 export default Dashboard;

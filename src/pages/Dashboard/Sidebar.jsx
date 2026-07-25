@@ -9,14 +9,17 @@ import {
 import { useNavigate } from "react-router-dom";
 import "./Dashboardcss/Sidebar.css";
 
-function Sidebar() {
+function Sidebar({fecharMenu}) {
   const navigate = useNavigate();
+  
+
+ 
   return (
     <>
       <div className="sidebar">
         <nav>
           <ul>
-            <li>
+            <li onClick={()=>navigate("/dashboard")}>
               {" "}
               <FiHome />
               Início
@@ -29,7 +32,7 @@ function Sidebar() {
               <FiHeart />
               Favoritos
             </li>
-            <li>
+            <li onClick={()=>navigate("/candidaturas")}>
               <FiList />
               Candidaturas
             </li>

@@ -1,17 +1,19 @@
-import { FiHeart } from "react-icons/fi";
+import { FiList } from "react-icons/fi";
 import logo from "../../assets/jobfinder-logo.png";
 import Footer from "../Dashboard/Footer";
-import "./Favoritos.css";
+import "./Candidaturas.css";
 import Layout from "../../Componentes/Layout";
-function Favoritos() {
-  return (
-   <Layout>
-      <div className="favoritos">
-        <h1>Favoritos</h1>
 
-        <div className="btn-favoritos">
-          <button>Vagas</button>
-          <button>Empresas</button>
+function Candidaturas() {
+  return (
+     <Layout>
+      <div className="candidaturas">
+        <h1>Minhas candidaturas</h1>
+
+        <div className="btn-candidaturas">
+          <button>Todas</button>
+          <button>Em andamento</button>
+          <button>Finalizadas</button>
         </div>
 
         <div className="card-vagas">
@@ -24,16 +26,14 @@ function Favoritos() {
               <p>Remoto</p>
               <p>R$ 8,000 - R$ 12,000</p>
             </div>
+
+            <button className="btn-status">Em análise</button>
           </div>
-
-          <FiHeart />
-
         </div>
 
-    
+       
       </div>
-     </Layout>
+      </Layout>
   );
 }
-
-export default Favoritos;
+export default Candidaturas

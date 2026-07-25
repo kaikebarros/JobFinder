@@ -1,5 +1,6 @@
 import { AnimatePresence } from "framer-motion";
 import { Route, Routes, useLocation } from "react-router-dom";
+import Candidaturas from "../pages/Candidaturas/Candidaturas";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Favoritos from "../pages/Favoritos/Favoritos";
 import GetStarted from "../pages/GetStarted/GetStarted";
@@ -27,6 +28,8 @@ function Routers() {
           <Route path="/vagas" element={<Vagas/>}> </Route>
           <Route path="/favoritos" element={<Favoritos/>}></Route>
           <Route path="/profile" element={<Profile/>}></Route>
+          <Route path="/candidaturas" element={<Candidaturas/>}></Route>
+          
         </Routes>
       </AnimatePresence>
     </>

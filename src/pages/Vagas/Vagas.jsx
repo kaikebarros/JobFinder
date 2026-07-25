@@ -1,10 +1,10 @@
 import logo from "../../assets/jobfinder-logo.png";
-import Footer from "../Dashboard/Footer";
+import Layout from "../../Componentes/Layout";
 import SearchBar from "../Dashboard/SearchBar";
 import "./Vagas.css";
 function Vagas() {
   return (
-    <>
+     <Layout>
       <div className="vagas">
         <h1>Vagas</h1>
         <div className="pesquisar-vagas">
@@ -30,9 +30,9 @@ function Vagas() {
             
           </div>
         </div>
-        <Footer />
+       
       </div>
-    </>
+     </Layout>
   );
 }
 
