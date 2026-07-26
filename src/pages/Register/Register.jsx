@@ -1,4 +1,5 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { FiEye, FiEyeOff, FiLock, FiUser } from "react-icons/fi";
@@ -8,8 +9,7 @@ import logo from "../../assets/jobfinder-logo.png";
 import Entrar from "../../Button/ButtonEntrar";
 import { ContGithub, ContGoogle } from "../../Button/ButtonSocial";
 import { verificarEmail, verificarSenha } from "../../firebaseConfig/auth";
-import { auth } from "../../firebaseConfig/firebase";
-
+import { auth, db } from "../../firebaseConfig/firebase";
 import "./Register.css";
 
 function Register() {
@@ -32,6 +32,12 @@ function Register() {
         email,
         senha,
       );
+
+      const id = userCreate.user.uid
+      const userRef = doc(db,"users",id)
+      console.log("Salvando no Firestore...");
+      await setDoc(userRef,{email, nome})
+      console.log("Salvo no Firestore...");
       console.log(userCreate.user);
       navigate("/dashboard");
     } catch (error) {
