@@ -10,6 +10,9 @@ import Entrar from "../../Button/ButtonEntrar";
 import { ContGithub, ContGoogle } from "../../Button/ButtonSocial";
 import { verificarEmail, verificarSenha } from "../../firebaseConfig/auth";
 import { auth, db } from "../../firebaseConfig/firebase";
+import { FiBriefcase } from "react-icons/fi";
+
+<FiBriefcase />;
 import "./Register.css";
 
 function Register() {
@@ -18,6 +21,7 @@ function Register() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [cargo, setCargo] = useState("");
 
   const [mostrarSenha, setMostrarSenha] = useState(false);
 
@@ -32,13 +36,12 @@ function Register() {
         auth,
         email,
         senha,
-      
       );
 
       const id = userCreate.user.uid;
       const userRef = doc(db, "users", id);
       console.log("Salvando no Firestore...");
-      await setDoc(userRef, { email, nome, createdAt: new Date() });
+      await setDoc(userRef, { email, nome,  cargo, createdAt: new Date() });
       console.log("Salvo no Firestore");
       console.log(userCreate.user);
       navigate("/dashboard");
@@ -121,6 +124,22 @@ function Register() {
             ) : (
               <FiEyeOff className="eye-icon" onClick={alternarIconeOlho} />
             )}
+          </div>
+
+          <div className="input-wrapper">
+            <div className="input-group">
+              <label htmlFor="senha">Cargo</label>
+              <div className="input-wrapper">
+                <FiBriefcase />
+                <input
+                  type="text"
+                  id="cargo"
+                  placeholder="Digite seu cargo"
+                  value={cargo}
+                  onChange={(e) => setCargo(e.target.value)}
+                />
+              </div>
+            </div>
           </div>
         </div>
 

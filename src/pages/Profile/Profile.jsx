@@ -18,68 +18,81 @@ import "./Profile.css";
 function Profile() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+  const [mostarDados, setMostrarDados] = useState(false);
 
   async function buscarDadosUsuario(uid) {
-    
-
-    
     const docRef = doc(db, "users", uid);
     const docSnap = await getDoc(docRef);
 
     console.log("UID buscado:", uid);
-  console.log("Existe?", docSnap.exists());
-  console.log("Dados:", docSnap.data());
+    console.log("Existe?", docSnap.exists());
+    console.log("Dados:", docSnap.data());
 
     if (docSnap.exists()) {
       setUser(docSnap.data());
     }
   }
 
-useEffect(() => {
-const unsubscribe = onAuthStateChanged(auth, (usuarioLogado) => {
-if (usuarioLogado) {
-buscarDadosUsuario(usuarioLogado.uid);
-}
-});
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (usuarioLogado) => {
+      if (usuarioLogado) {
+        buscarDadosUsuario(usuarioLogado.uid);
+      }
+    });
 
-return () => unsubscribe();
-}, []);
+    return () => unsubscribe();
+  }, []);
+
+  const meusDados = () => {
+    return (
+      <div className="meus-dados">
+        <h2>Meus dados</h2>
+
+        <p>{`Nome: ${user.nome}`}</p>
+        <p>{`Email: ${user.email}`}</p>
+        <p>{`Cargo: ${user.cargo}`}</p>
+      </div>
+    );
+  };
 
   return (
     <Layout>
-    
-        <BtnConfig onClick={() => navigate("/configuracoes")}/>
-    
+      <div onClick={() => navigate("/configuracoes")}>
+        <BtnConfig />
+      </div>
+
       <div className="profile">
         <div className="profile-header">
           <div className="profile-user">
             <img src={logo} alt="" />
 
             <h2>{user?.nome}</h2>
-            <p>dev front</p>
+            <p>{user?.cargo}</p>
             <a href="#">Ver perfil público</a>
           </div>
 
           <div className="profile-numbers">
             <p>
-              <span>24</span>
+              <span>0</span>
               Candidaturas
             </p>
 
             <p>
-              <span>8</span>
+              <span>0</span>
               Salvas
             </p>
 
             <p>
-              <span>3</span>
+              <span>0</span>
               Entrevistas
             </p>
           </div>
 
           <nav>
             <ul>
-              <li>
+
+              {mostarDados && meusDados()}
+              <li onClick={() => setMostrarDados(!mostarDados)}>
                 {" "}
                 <FiUser />
                 Meus dados
