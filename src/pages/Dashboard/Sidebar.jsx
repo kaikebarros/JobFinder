@@ -36,17 +36,17 @@ function Sidebar({fecharMenu}) {
               <FiList />
               Candidaturas
             </li>
-            <li>
+            <li onClick={()=>navigate("/notificacoes")}>
               <FiBell />
               Notificações
             </li>
-            <li>
+            <li onClick={()=>navigate("/configuracoes")}>
               <FiSettings />
               Configurações
             </li>
           </ul>
 
-          <button className="btn-sair">Sair</button>
+          
         </nav>
       </div>
     </>

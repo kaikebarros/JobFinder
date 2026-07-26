@@ -1,14 +1,17 @@
 import { FiBell } from "react-icons/fi";
-import "../pages/Dashboard/Dashboardcss/Header.css"
+import { useNavigate } from "react-router-dom";
+import "../pages/Dashboard/Dashboardcss/Header.css";
 export const BtnNotificacao = () => {
+  const navigate = useNavigate();
   return (
     <>
       {" "}
-      
-        <button className="btn-notificacao">
-        <FiBell/>
-        </button>
- 
+      <button
+        className="btn-notificacao"
+        onClick={() => navigate("/notificacoes")}
+      >
+        <FiBell />
+      </button>
     </>
   );
 };

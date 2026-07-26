@@ -5,7 +5,7 @@ import "./Dashboardcss/Dashboard.css";
 import SearchBar from "./SearchBar";
 function Dashboard() {
   return (
-    <Layout headerAction={<BtnNotificacao/>}>
+    <Layout  headerAction={<BtnNotificacao/>}>
       <div className="dashboard">
  
         <div className="saudacao">

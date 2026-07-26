@@ -1,16 +1,19 @@
+import { FiFilter, FiSearch } from "react-icons/fi";
 import logo from "../../assets/jobfinder-logo.png";
 import Layout from "../../Componentes/Layout";
-import SearchBar from "../Dashboard/SearchBar";
+
 import "./Vagas.css";
 function Vagas() {
   return (
      <Layout>
       <div className="vagas">
         <h1>Vagas</h1>
-        <div className="pesquisar-vagas">
-          <SearchBar />
-       
-        </div>
+        <div className="input">
+              <FiSearch />
+              <input type="text" placeholder="Buscar vagas, cargos ou empresas..." />
+      
+              <FiFilter />
+               </div>
 
         <p>120 vagas encontradas</p>
 

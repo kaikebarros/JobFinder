@@ -1,0 +1,182 @@
+/* ===========================
+   NOTIFICAÇÕES
+=========================== */
+
+.notificacoes {
+  min-height: 100vh;
+
+  padding: 1.5rem 1rem 7rem;
+
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+}
+
+/* ===========================
+   TOPO
+=========================== */
+
+.notificacoes h1 {
+  font-size: 1.8rem;
+  font-weight: var(--fw-bold);
+
+  margin-bottom: 1.5rem;
+}
+
+.notificacoes button {
+  width: 100%;
+
+  padding: .9rem;
+
+  border: none;
+  border-radius: 14px;
+
+  background: var(--primary);
+  color: var(--text-primary);
+
+  font-size: .95rem;
+  font-weight: var(--fw-medium);
+
+  cursor: pointer;
+
+  transition: .25s;
+  box-shadow: 0 10px 25px var(--shadow);
+
+  margin-bottom: 2rem;
+}
+
+.notificacoes button:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   CARD
+=========================== */
+
+.card-notificacao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 1rem;
+
+  padding: 1rem;
+
+  background: var(--card);
+
+  border: 1px solid var(--border);
+  border-radius: 18px;
+
+  box-shadow: 0 10px 25px var(--shadow);
+
+  transition: .25s;
+
+  margin-bottom: 1rem;
+}
+
+.card-notificacao:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary);
+}
+
+/* ===========================
+   CONTEÚDO
+=========================== */
+
+.card-destaque {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  flex: 1;
+}
+
+.card-destaque img {
+  width: 60px;
+  height: 60px;
+
+  object-fit: contain;
+
+  background: var(--surface);
+
+  border-radius: 14px;
+
+  padding: .6rem;
+}
+
+.descricao-notificacao {
+  display: flex;
+  flex-direction: column;
+
+  gap: .35rem;
+}
+
+.descricao-notificacao h2 {
+  font-size: 1rem;
+  font-weight: var(--fw-bold);
+
+  color: var(--text-primary);
+}
+
+.descricao-notificacao p:first-of-type {
+  font-size: .92rem;
+
+  color: var(--text-secondary);
+}
+
+.descricao-notificacao p:last-of-type {
+  font-size: .8rem;
+
+  color: var(--text-muted);
+}
+
+/* ===========================
+   INDICADOR
+=========================== */
+
+.dots-notificacao {
+  width: 12px;
+  height: 12px;
+
+  flex-shrink: 0;
+
+  background: var(--primary);
+
+  border-radius: 50%;
+
+  box-shadow: 0 0 15px var(--primary);
+}
+
+/* ===========================
+   RESPONSIVO
+=========================== */
+
+@media (min-width: 768px) {
+  .notificacoes {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 2rem 2rem 7rem;
+  }
+
+  .notificacoes h1 {
+    font-size: 2.2rem;
+  }
+
+  .card-notificacao {
+    padding: 1.25rem;
+  }
+
+  .card-destaque img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .descricao-notificacao h2 {
+    font-size: 1.1rem;
+  }
+
+  .descricao-notificacao p:first-of-type {
+    font-size: .95rem;
+  }
+}

@@ -6,14 +6,16 @@ import {
   FiSliders,
   FiUser,
 } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 import logo from "../../assets/jobfinder-logo.png";
 import { BtnConfig } from "../../Componentes/BtnConfig";
 import Layout from "../../Componentes/Layout";
 import "./Profile.css";
 function Profile() {
+  const navigate = useNavigate()
   return (
     <Layout >
-        <button > 
+        <button onClick={()=>navigate("/configuracoes")}> 
        <BtnConfig/>
        </button>
       <div className="profile">
@@ -65,7 +67,7 @@ function Profile() {
                 Notificações
               </li>
 
-              <li>
+              <li onClick={()=>navigate("/configuracoes")}>
                 <FiSettings />
                 Configurações
               </li>
