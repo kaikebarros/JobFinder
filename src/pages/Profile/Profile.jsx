@@ -1,3 +1,6 @@
+import { onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import { useEffect, useState } from "react";
 import {
   FiBell,
   FiFileText,
@@ -10,23 +13,50 @@ import { useNavigate } from "react-router-dom";
 import logo from "../../assets/jobfinder-logo.png";
 import { BtnConfig } from "../../Componentes/BtnConfig";
 import Layout from "../../Componentes/Layout";
+import { auth, db } from "../../firebaseConfig/firebase";
 import "./Profile.css";
 function Profile() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+
+  async function buscarDadosUsuario(uid) {
+    
+
+    
+    const docRef = doc(db, "users", uid);
+    const docSnap = await getDoc(docRef);
+
+    console.log("UID buscado:", uid);
+  console.log("Existe?", docSnap.exists());
+  console.log("Dados:", docSnap.data());
+
+    if (docSnap.exists()) {
+      setUser(docSnap.data());
+    }
+  }
+
+useEffect(() => {
+const unsubscribe = onAuthStateChanged(auth, (usuarioLogado) => {
+if (usuarioLogado) {
+buscarDadosUsuario(usuarioLogado.uid);
+}
+});
+
+return () => unsubscribe();
+}, []);
+
   return (
-    <Layout >
-        <button onClick={()=>navigate("/configuracoes")}> 
-       <BtnConfig/>
-       </button>
+    <Layout>
+    
+        <BtnConfig onClick={() => navigate("/configuracoes")}/>
+    
       <div className="profile">
         <div className="profile-header">
-     
-
           <div className="profile-user">
             <img src={logo} alt="" />
 
-            <h2>Kaike Barros</h2>
-            <p>Desenvolvedor Front-end</p>
+            <h2>{user?.nome}</h2>
+            <p>dev front</p>
             <a href="#">Ver perfil público</a>
           </div>
 
@@ -67,7 +97,7 @@ function Profile() {
                 Notificações
               </li>
 
-              <li onClick={()=>navigate("/configuracoes")}>
+              <li onClick={() => navigate("/configuracoes")}>
                 <FiSettings />
                 Configurações
               </li>
@@ -76,13 +106,10 @@ function Profile() {
                 Sair
               </li>
             </ul>
-
-         
           </nav>
         </div>
-     
       </div>
-   </Layout>
+    </Layout>
   );
 }
 

@@ -18,6 +18,7 @@ function Register() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+
   const [mostrarSenha, setMostrarSenha] = useState(false);
 
   const handleRegister = async (e) => {
@@ -31,13 +32,14 @@ function Register() {
         auth,
         email,
         senha,
+      
       );
 
-      const id = userCreate.user.uid
-      const userRef = doc(db,"users",id)
+      const id = userCreate.user.uid;
+      const userRef = doc(db, "users", id);
       console.log("Salvando no Firestore...");
-      await setDoc(userRef,{email, nome})
-      console.log("Salvo no Firestore...");
+      await setDoc(userRef, { email, nome, createdAt: new Date() });
+      console.log("Salvo no Firestore");
       console.log(userCreate.user);
       navigate("/dashboard");
     } catch (error) {
@@ -119,7 +121,6 @@ function Register() {
             ) : (
               <FiEyeOff className="eye-icon" onClick={alternarIconeOlho} />
             )}
-        
           </div>
         </div>
 

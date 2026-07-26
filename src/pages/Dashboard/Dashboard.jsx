@@ -1,15 +1,48 @@
+import { useState } from "react";
 import logo from "../../assets/jobfinder-logo.png";
+import { BtnNotificacao } from "../../Componentes/BtnNotificacao";
 import Layout from "../../Componentes/Layout";
-import  { BtnNotificacao } from "../../Componentes/BtnNotificacao";
 import "./Dashboardcss/Dashboard.css";
 import SearchBar from "./SearchBar";
+
+import { onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import { useEffect } from "react";
+import { auth, db } from "../../firebaseConfig/firebase";
 function Dashboard() {
+
+
+    const [user, setUser] = useState(null);
+  
+    async function buscarDadosUsuario(uid) {
+      
+  
+      
+      const docRef = doc(db, "users", uid);
+      const docSnap = await getDoc(docRef);
+  
+  
+      if (docSnap.exists()) {
+        setUser(docSnap.data());
+      }
+    }
+  
+  useEffect(() => {
+  const unsubscribe = onAuthStateChanged(auth, (usuarioLogado) => {
+  if (usuarioLogado) {
+  buscarDadosUsuario(usuarioLogado.uid);
+  }
+  });
+  
+  return () => unsubscribe();
+  }, []);
+  
   return (
     <Layout  headerAction={<BtnNotificacao/>}>
       <div className="dashboard">
  
         <div className="saudacao">
-          <h1>Olá, Kaike! 👋</h1>
+          <h1>Olá, {user?.nome}! 👋</h1>
           <p>Pronto para encontrar a oportunidade ideal?</p>
         </div>
 
