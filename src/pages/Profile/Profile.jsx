@@ -1,4 +1,5 @@
-import { onAuthStateChanged } from "firebase/auth";
+
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import {
@@ -55,6 +56,13 @@ function Profile() {
     );
   };
 
+  async function handleLogout() {
+    try {
+      await signOut(auth)
+      navigate("/login")
+    } catch (error) {}
+  }
+
   return (
     <Layout>
       <div onClick={() => navigate("/configuracoes")}>
@@ -90,7 +98,6 @@ function Profile() {
 
           <nav>
             <ul>
-
               {mostarDados && meusDados()}
               <li onClick={() => setMostrarDados(!mostarDados)}>
                 {" "}
@@ -114,7 +121,7 @@ function Profile() {
                 <FiSettings />
                 Configurações
               </li>
-              <li>
+              <li onClick={() => handleLogout()}>
                 <FiLogOut />
                 Sair
               </li>

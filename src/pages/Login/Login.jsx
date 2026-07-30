@@ -1,4 +1,4 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { browserLocalPersistence, signInWithEmailAndPassword } from "firebase/auth";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
@@ -10,6 +10,8 @@ import { ContGithub, ContGoogle } from "../../Button/ButtonSocial";
 import Dots from "../../Componentes/Dots";
 import { verificarEmail, verificarSenha } from "../../firebaseConfig/auth";
 import { auth } from "../../firebaseConfig/firebase";
+
+import { setPersistence } from "firebase/auth";
 
 import "./Login.css";
 
@@ -33,6 +35,8 @@ function Login() {
     if (!verificarSenha(senha)) return;
 
     try {
+
+      await setPersistence(auth, browserLocalPersistence)
       const userLogin = await signInWithEmailAndPassword(auth, email, senha);
       console.log(userLogin.user);
       navigate("/dashboard");
