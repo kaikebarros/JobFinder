@@ -6,12 +6,14 @@ import "./Dashboardcss/Dashboard.css";
 import SearchBar from "./SearchBar";
 
 import { onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "../../firebaseConfig/firebase";
 function Dashboard() {
+  const [busca, setBusca] = useState("");
   const navigate = useNavigate();
+  const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -36,12 +38,28 @@ function Dashboard() {
     const unsubscribe = onAuthStateChanged(auth, (usuarioLogado) => {
       if (usuarioLogado) {
         buscarDadosUsuario(usuarioLogado.uid);
+        buscarVagas();
       }
     });
 
     return () => unsubscribe();
   }, []);
 
+  async function buscarVagas() {
+    const jobsRef = collection(db, "jobs");
+    const resultado = await getDocs(jobsRef);
+    const vagas = resultado.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    setJobs(vagas);
+  }
+  const jobsFiltrados = jobs.filter(
+    (job) =>
+      job.titulo.toLowerCase().includes(busca.toLowerCase()) ||
+      job.empresa.toLowerCase().includes(busca.toLowerCase()) ||
+      job.local.toLowerCase().includes(busca.toLowerCase()) ||
+      job.tipo.toLowerCase().includes(busca.toLowerCase()),
+  );
+
+  const vagaDestaque = jobsFiltrados[0];
   return (
     <Layout headerAction={<BtnNotificacao />}>
       <div className="dashboard">
@@ -50,7 +68,7 @@ function Dashboard() {
           <p>Pronto para encontrar a oportunidade ideal?</p>
         </div>
 
-        <SearchBar />
+        <SearchBar busca={busca} setBusca={setBusca} />
 
         <section className="destaque">
           <div className="detaque-texto">
@@ -65,53 +83,48 @@ function Dashboard() {
                 <div className="card-destaque">
                   <img src={logo} alt="" />
 
-                  <div className="descricao-vaga-destaque">
-                    <h2>Front-end Developer</h2>
-                    <p>Nubank</p>
-                    <p>Remoto</p>
-                    <p>R$ 8,000 - R$ 12,000</p>
-                  </div>
+                  {vagaDestaque && (
+                    <div className="descricao-vaga-destaque">
+                      <h2>{vagaDestaque.titulo}</h2>
+                      <p>{vagaDestaque.empresa}</p>
+                      <p>{vagaDestaque.local}</p>
+                      <p>{vagaDestaque.salario}</p>
+                      <p>{vagaDestaque.tipo}</p>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
           </div>
 
           <h2 className="titulo-vagas">Vagas para você</h2>
-
+ {jobsFiltrados.slice(1).map((job) => {
+   return (
           <div className="card-destaque">
             <div className="container-vagas">
               <div className="card-vagas">
                 <div className="card-destaque">
                   <img src={logo} alt="" />
-
-                  <div className="descricao-vaga-destaque">
-                    <h2>Front-end Developer</h2>
-                    <p>Nubank</p>
-                    <p>Remoto</p>
-                    <p>R$ 8,000 - R$ 12,000</p>
-                  </div>
+                 
+                   
+                      <div className="descricao-vaga-destaque">
+                        <div>
+                          <h2>{job.titulo}</h2>
+                          <p>{job.empresa}</p>
+                          <p>{job.local}</p>
+                          <p>{job.salario}</p>
+                          <p>{job.tipo}</p>
+                        </div>
+                      </div>
+                    
+                
                 </div>
               </div>
             </div>
           </div>
-
-          <div className="card-destaque">
-            {" "}
-            <div className="container-vagas">
-              <div className="card-vagas">
-                <div className="card-destaque">
-                  <img src={logo} alt="" />
-
-                  <div className="descricao-vaga-destaque">
-                    <h2>Front-end Developer</h2>
-                    <p>Nubank</p>
-                    <p>Remoto</p>
-                    <p>R$ 8,000 - R$ 12,000</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          );
+  })}
+      
         </section>
       </div>
     </Layout>
