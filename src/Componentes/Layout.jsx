@@ -4,7 +4,7 @@ import Header from "../pages/Dashboard/Header";
 import Sidebar from "../pages/Dashboard/Sidebar";
 import "./Layout.css";
 
-function Layout({ children, headerAction, }) {
+function Layout({ children, headerAction }) {
   const [menu, setMenu] = useState(false);
 
   const abrirMenu = () => {
@@ -14,23 +14,25 @@ function Layout({ children, headerAction, }) {
     setMenu(false);
   };
   return (
-   
-      <div className="layout">
-        <Header abrirMenu={abrirMenu} 
-        headerAction={headerAction}/>
-
-        {menu && <Sidebar fecharMenu={fecharMenu} />}
-
-        <div
-          className={`overlay ${menu ? "active" : ""}`}
-          onClick={() => setMenu(false)}
-        ></div>
-<main> {children}</main>
-       
-
-        <Footer />
+    <>
+     <div className="popup">
+        <p>🚧 EM DESENVOLVIMENTO</p>
       </div>
-  
+    <div className="layout">
+     
+      <Header abrirMenu={abrirMenu} headerAction={headerAction} />
+
+      {menu && <Sidebar fecharMenu={fecharMenu} />}
+
+      <div
+        className={`overlay ${menu ? "active" : ""}`}
+        onClick={() => setMenu(false)}
+      ></div>
+      <main> {children}</main>
+
+      <Footer />
+    </div>
+    </>
   );
 }
 

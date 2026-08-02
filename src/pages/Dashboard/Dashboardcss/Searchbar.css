@@ -85,6 +85,7 @@
   font-weight: var(--fw-bold);
 }
 
+
 @media (min-width: 768px) {
   .search {
     flex-direction: row;

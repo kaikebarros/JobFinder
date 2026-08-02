@@ -100,7 +100,7 @@ function Dashboard() {
           <h2 className="titulo-vagas">Vagas para você</h2>
  {jobsFiltrados.slice(1).map((job) => {
    return (
-          <div className="card-destaque">
+          <div className="card-destaque" key={job.id}>
             <div className="container-vagas">
               <div className="card-vagas">
                 <div className="card-destaque">
@@ -127,6 +127,21 @@ function Dashboard() {
       
         </section>
       </div>
+        <div className="rodape">
+         
+          <p>Desenvolvido por Kaike Barros</p>
+
+          <p>Versão 1.0.0  • © 2026</p>
+          
+
+          <a
+            href="https://github.com/kaikebarros/JobFinder.git"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+        </div>
     </Layout>
   );
 }

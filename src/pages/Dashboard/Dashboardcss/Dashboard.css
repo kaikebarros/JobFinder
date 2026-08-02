@@ -193,6 +193,43 @@
 
   font-weight: var(--fw-bold);
 }
+.rodape {
+  margin-top: 20px;
+  padding: 20px;
+
+  border-top: 1px solid #e5e7eb;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.rodape p {
+  margin: 0;
+}
+
+.rodape a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+  width: fit-content;
+  transition: color .2s;
+}
+
+.rodape a:hover {
+  color: #1d4ed8;
+}
+
+.rodape::before {
+  content: "JobFinder";
+  font-size: .95rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 6px;
+}
 
 
 /* ===========================
