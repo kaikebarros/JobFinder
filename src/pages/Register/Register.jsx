@@ -17,7 +17,7 @@ import "./Register.css";
 
 function Register() {
   const navigate = useNavigate();
-
+  const [erro, setErro] = useState("");
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -40,16 +40,20 @@ function Register() {
 
       const id = userCreate.user.uid;
       const userRef = doc(db, "users", id);
-      console.log("Salvando no Firestore...");
-      await setDoc(userRef, { email, nome,  cargo, createdAt: new Date() });
+
+      await setDoc(userRef, { email, nome, cargo, createdAt: new Date() });
       console.log("Salvo no Firestore");
       console.log(userCreate.user);
       navigate("/dashboard");
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
-        console.log("Email já cadastrado");
-      } else {
-        console.log(error.message);
+        setErro("Email já cadastrado");
+      } else if (error.code === "auth/invalid-email")
+        setErro("Digite um email válido.");
+      else if (error.code === "auth/missing-password")
+        setErro("Digite sua senha.");
+      else {
+        setErro("Não foi possível cadastrar. Tente novamente.");
       }
     }
   };
@@ -90,6 +94,12 @@ function Register() {
             />
           </div>
         </div>
+        {erro &&(
+          <p className="mensagem-erro">
+
+            {erro}
+          </p>
+        )}
 
         <div className="input-group">
           <label htmlFor="email">E-mail</label>

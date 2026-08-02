@@ -1,0 +1,26 @@
+{
+  "name": "Job Finder",
+  "short_name": "Job Finder",
+  "description": "Aplicação web para encontrar oportunidades de emprego de forma simples e rápida.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0B0B14",
+  "theme_color": "#7C3AED",
+  "lang": "pt-BR",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/jobfinderfavicon1.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/jobfinderfavicon1.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

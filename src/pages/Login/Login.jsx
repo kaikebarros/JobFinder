@@ -19,7 +19,7 @@ function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-
+  const [erro, setErro] = useState("")
   const [nome, setNome] = useState("");
 
   const [mostrarSenha, setMostrarSenha] = useState(false);
@@ -41,10 +41,14 @@ function Login() {
       console.log(userLogin.user);
       navigate("/dashboard");
     } catch (error) {
-      if (error.code === "auth/invalid-credential") {
-        console.log("E-mail ou senha incorretos");
-      } else {
-        console.log(error.message);
+          if (error.code === "auth/email-already-in-use") {
+        setErro("Email já cadastrado");
+      } else if (error.code === "auth/invalid-email")
+        setErro("Digite um email válido.");
+      else if (error.code === "auth/missing-password")
+        setErro("Digite sua senha.");
+      else {
+        setErro("Não foi possível entrar. Tente novamente.");
       }
     }
   };
@@ -84,6 +88,12 @@ function Login() {
                 autoComplete="username"
               />
             </div>
+             {erro &&(
+          <p className="mensagem-erro">
+
+            {erro}
+          </p>
+        )}
           </div>
 
           <div className="login-group">
