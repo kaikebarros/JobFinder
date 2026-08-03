@@ -41,12 +41,15 @@ function Login() {
       console.log(userLogin.user);
       navigate("/dashboard");
     } catch (error) {
+     
           if (error.code === "auth/email-already-in-use") {
         setErro("Email já cadastrado");
       } else if (error.code === "auth/invalid-email")
         setErro("Digite um email válido.");
       else if (error.code === "auth/missing-password")
         setErro("Digite sua senha.");
+      else if (error.code === "auth/invalid-credential")
+        setErro("Email ou senha incorretos.");
       else {
         setErro("Não foi possível entrar. Tente novamente.");
       }

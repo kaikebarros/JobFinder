@@ -2,6 +2,7 @@ import { useState } from "react";
 import logo from "../../assets/jobfinder-logo.png";
 import { BtnNotificacao } from "../../Componentes/BtnNotificacao";
 import Layout from "../../Componentes/Layout";
+import Notificacoes from "../Notificacoes/Notificacoes";
 import "./Dashboardcss/Dashboard.css";
 import SearchBar from "./SearchBar";
 
@@ -45,6 +46,14 @@ function Dashboard() {
     return () => unsubscribe();
   }, []);
 
+   const [mostrarNotificacoes, setmostrarNotificacoes] = useState(false);
+  const abrirNoti = () => {
+    setmostrarNotificacoes(true);
+  };
+  const fecharNoti = () => {
+    setmostrarNotificacoes(false);
+  };
+
   async function buscarVagas() {
     const jobsRef = collection(db, "jobs");
     const resultado = await getDocs(jobsRef);
@@ -61,7 +70,8 @@ function Dashboard() {
 
   const vagaDestaque = jobsFiltrados[0];
   return (
-    <Layout headerAction={<BtnNotificacao />}>
+    <Layout headerAction={<BtnNotificacao onClick={abrirNoti}/>}>
+      {mostrarNotificacoes && <Notificacoes fechar={fecharNoti}/>}
       <div className="dashboard">
         <div className="saudacao">
           <h1>Olá, {user?.nome}! 👋</h1>

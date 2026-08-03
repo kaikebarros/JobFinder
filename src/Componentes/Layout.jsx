@@ -12,7 +12,9 @@ function Layout({ children, headerAction }) {
   };
   const fecharMenu = () => {
     setMenu(false);
+  
   };
+
   return (
     <>
      <div className="popup">
